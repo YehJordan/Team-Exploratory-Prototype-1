@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class TimeStateManager : MonoBehaviour
 {
+
+    public Material presentSkybox;
+    public Material pastSkybox;
     public enum TimeState
     {
         Present,
@@ -21,6 +24,7 @@ public class TimeStateManager : MonoBehaviour
     private void Start()
     {
         ApplyTimeState();
+        UpdateSkybox();
     }
 
     private void Update()
@@ -39,6 +43,7 @@ public class TimeStateManager : MonoBehaviour
             : TimeState.Present;
 
         ApplyTimeState();
+        UpdateSkybox();
 
         Debug.Log("Current time state: " + currentState);
     }
@@ -56,5 +61,10 @@ public class TimeStateManager : MonoBehaviour
             if (obj != null)
                 obj.SetActive(currentState == TimeState.Past);
         }
+    }
+
+    private void UpdateSkybox()
+    {
+        RenderSettings.skybox = currentState == TimeState.Present ? presentSkybox : pastSkybox;
     }
 }
