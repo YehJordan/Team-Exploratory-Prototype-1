@@ -6,7 +6,7 @@ public class GoalPickup : MonoBehaviour
     [SerializeField] private string endMessage = "You Win!";
     [SerializeField] private float spinSpeed = 90f;
 
-    private bool gameEnded = false;
+    public bool gameEnded = false;
 
     private void Update()
     {

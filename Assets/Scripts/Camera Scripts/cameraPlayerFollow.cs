@@ -14,6 +14,8 @@ public class camera : MonoBehaviour
     private float yaw;
     private float pitch;
 
+    public GoalPickup goalPickup;
+
     void Start()
     {
         if (player == null)
@@ -37,7 +39,9 @@ public class camera : MonoBehaviour
             Cursor.visible = true;
         }
 
-        if (Cursor.lockState != CursorLockMode.Locked && Input.GetMouseButtonDown(0))
+        if ((goalPickup == null || !goalPickup.gameEnded) &&
+            Cursor.lockState != CursorLockMode.Locked &&
+            Input.GetMouseButtonDown(0))
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
