@@ -6,6 +6,7 @@ public class playerMovement : MonoBehaviour
     public float player_move_speed = 5.0f;
     public float player_rotation_speed = 360.0f;
     public float player_jump_force = 5.0f;
+    public float player_sprint_speed = 8.0f;
     private Rigidbody rb;
     private Vector3 movement;
     private bool jumpRequested;
@@ -43,7 +44,7 @@ public class playerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            player_move_speed = 10.0f;
+            player_move_speed = player_sprint_speed;
         }
         else
         {
